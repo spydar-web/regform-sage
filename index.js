@@ -6,7 +6,11 @@ let lastname = document.querySelector("#lastname");
 let buttonbtn = document.querySelector("#submitbtn");
 let password = document.querySelector("#password");
 let username = document.querySelector("#username");
-let MessageFirstName = document.querySelector("#message");
+let Messageemail = document.querySelector("#messageEmail");
+let MessageFirstName = document.querySelector("#messageFirst");
+let messageUsername = document.querySelector("#messageUsername");
+let messageLastname = document.querySelector("#messageLastname");
+let messagepassword = document.querySelector("#messagepassword");
 let email = document.querySelector("#email");
 
 const baseUrl = "https://nft.urbandesignsco.com/api";
@@ -22,11 +26,18 @@ buttonbtn.addEventListener("click", function (e) {
     .then((res) => {
       res.json().then((_res) => {
         console.log("res", _res);
-        if (_res.status == 400) {;
-         console.log(_res.message.first_name);
-
+        if (_res.status == 400) {
+          console.log(_res.message.first_name);
           let erroremail = _res.message.email;
-          MessageFirstName.innerHTML=erroremail;
+          let errorfirst = _res.message.first_name;
+          let errorusername = _res.message.username;
+          let errorLastname = _res.message.last_name;
+          let errorpassword = _res.message.password;
+          Messageemail.innerHTML = erroremail;
+          MessageFirstName.innerHTML = errorfirst;
+          messageUsername.innerHTML = errorusername;
+          messageLastname.innerHTML = errorLastname;
+          messagepassword.innerHTML = errorpassword;
         }
       });
     })
